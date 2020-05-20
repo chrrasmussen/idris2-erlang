@@ -1,4 +1,4 @@
-INTERACTIVE ?= --interactive
+INTERACTIVE ?=
 threads ?= `nproc`
 
 .PHONY: testbin test
