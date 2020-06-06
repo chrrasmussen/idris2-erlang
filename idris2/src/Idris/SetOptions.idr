@@ -23,8 +23,8 @@ import Data.Strings
 
 import Libraries.Data.List1 as Lib
 
-import System
-import System.Directory
+import Erlang.System
+import Erlang.System.Directory
 
 %default covering
 

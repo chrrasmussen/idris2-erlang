@@ -28,7 +28,7 @@ import Libraries.Text.PrettyPrint.Prettyprinter.Util
 import Libraries.Utils.String
 import Libraries.Data.String.Extra
 
-import System.File
+import Erlang.System.File
 
 %hide Data.Strings.lines
 %hide Data.Strings.lines'

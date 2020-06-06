@@ -23,7 +23,7 @@ import Libraries.Data.ANameMap
 import Libraries.Text.PrettyPrint.Prettyprinter
 
 import Data.List
-import System.File
+import Erlang.System.File
 
 %default covering
 

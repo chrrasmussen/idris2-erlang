@@ -3,15 +3,15 @@ module Libraries.Utils.Binary
 import Core.Core
 import Core.Name
 
-import Data.Buffer
-import public Data.IOArray
+import Erlang.Data.Buffer
+import public Erlang.Data.IOArray
 import Data.List
 import Data.List.Elem
 import Data.List1
 import Data.Nat
 import Data.Vect
 
-import System.File
+import Erlang.System.File
 import Libraries.Data.PosMap
 
 -- Serialising data as binary. Provides an interface TTC which allows
