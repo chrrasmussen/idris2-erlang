@@ -19,8 +19,8 @@ import Data.List
 import Data.So
 import Data.Strings
 
-import System
-import System.Directory
+import Erlang.System
+import Erlang.System.Directory
 
 %default covering
 

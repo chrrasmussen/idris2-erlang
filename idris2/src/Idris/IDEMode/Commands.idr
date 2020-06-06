@@ -5,7 +5,7 @@ import Core.Name
 import public Idris.REPLOpts
 import Libraries.Utils.Hex
 
-import System.File
+import Erlang.System.File
 
 %default total
 

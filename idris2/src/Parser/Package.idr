@@ -7,7 +7,7 @@ import public Libraries.Text.Parser
 import public Parser.Support
 
 import Core.Core
-import System.File
+import Erlang.System.File
 import Libraries.Utils.Either
 
 %default total

@@ -13,7 +13,7 @@ import public Core.TT
 import Libraries.Utils.Binary
 
 import Libraries.Data.IntMap
-import Data.IOArray
+import Erlang.Data.IOArray
 import Data.List
 import Data.List1
 import Data.Maybe
@@ -22,8 +22,8 @@ import Libraries.Data.NameMap
 import Libraries.Data.StringMap
 import Libraries.Text.Distance.Levenshtein
 
-import System
-import System.Directory
+import Erlang.System
+import Erlang.System.Directory
 
 %default covering
 

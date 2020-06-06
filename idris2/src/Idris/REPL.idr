@@ -65,8 +65,8 @@ import Libraries.Text.PrettyPrint.Prettyprinter
 import Libraries.Text.PrettyPrint.Prettyprinter.Util
 import Libraries.Text.PrettyPrint.Prettyprinter.Render.Terminal
 
-import System
-import System.File
+import Erlang.System
+import Erlang.System.File
 
 %hide Data.Strings.lines
 %hide Data.Strings.lines'

@@ -23,7 +23,7 @@ import Data.Strings
 import Libraries.Data.String.Extra
 import Libraries.Text.PrettyPrint.Prettyprinter
 import Libraries.Text.PrettyPrint.Prettyprinter.Util
-import System.File
+import Erlang.System.File
 import Libraries.Utils.String
 import Libraries.Data.String.Extra
 

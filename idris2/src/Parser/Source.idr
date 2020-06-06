@@ -5,7 +5,7 @@ import public Parser.Rule.Source
 import public Parser.Unlit
 
 import Core.Core
-import System.File
+import Erlang.System.File
 import Libraries.Utils.Either
 
 %default total

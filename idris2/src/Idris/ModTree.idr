@@ -22,8 +22,8 @@ import Idris.Pretty
 import Data.List
 import Libraries.Data.StringMap
 
-import System.Directory
-import System.File
+import Erlang.System.Directory
+import Erlang.System.File
 
 import Libraries.Utils.Either
 

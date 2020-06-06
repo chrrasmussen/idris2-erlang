@@ -13,7 +13,7 @@ import Data.List
 import Data.List.Views
 import Data.Strings
 import Parser.Unlit
-import System.File
+import Erlang.System.File
 
 %default total
 
