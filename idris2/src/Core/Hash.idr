@@ -7,7 +7,6 @@ import Data.List
 import Data.List1
 import Libraries.Data.List.Lazy
 import Data.Strings
-import Libraries.Data.String.Iterator
 
 %default covering
 
@@ -58,7 +57,7 @@ Hashable a => Hashable (Maybe a) where
 
 export
 Hashable String where
-  hashWithSalt h = String.Iterator.foldl hashWithSalt h
+  hashWithSalt h = foldl hashWithSalt h . unpack
 
 export
 Hashable Namespace where

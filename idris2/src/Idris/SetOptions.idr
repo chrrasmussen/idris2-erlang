@@ -30,9 +30,9 @@ export
 candidateDirs : String -> String -> PkgVersionBounds ->
                 IO (List (String, PkgVersion))
 candidateDirs dname pkg bounds
-    = do Right d <- openDir dname
+    = do Right dirs <- dirEntries dname
              | Left err => pure []
-         getFiles d []
+         pure $ mapMaybe getFile dirs
   where
     toVersion : String -> Maybe PkgVersion
     toVersion = map MkPkgVersion
@@ -59,15 +59,12 @@ candidateDirs dname pkg bounds
     -- (full name, version string)
     -- We'll order by version string that the highest version number is the
     -- one we use
-    getFiles : Directory -> List (String, PkgVersion) ->
-               IO (List (String, PkgVersion))
-    getFiles d acc
-        = do Right str <- dirEntry d
-                   | Left err => pure (reverse acc)
-             let (pkgdir, ver) = getVersion str
-             if pkgdir == pkg && inBounds ver bounds
-                then getFiles d (((dname </> str), ver) :: acc)
-                else getFiles d acc
+    getFile : String -> Maybe (String, PkgVersion)
+    getFile str =
+      let (pkgdir, ver) = getVersion str
+      in if pkgdir == pkg && inBounds ver bounds
+          then Just ((dname </> str), ver)
+          else Nothing
 
 export
 addPkgDir : {auto c : Ref Ctxt Defs} ->

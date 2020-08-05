@@ -1033,8 +1033,7 @@ mutual
            coreLift_ (putStr (prompt (evalMode opts) ++ show ns ++ "> "))
            coreLift_ (fflush stdout)
            inp <- coreLift getLine
-           end <- coreLift $ fEOF stdin
-           if end
+           if False
              then do
                -- start a new line in REPL mode (not relevant in IDE mode)
                coreLift_ $ putStrLn ""
