@@ -188,13 +188,7 @@ record Options where
 export
 availableCGs : Options -> List (String, CG)
 availableCGs o
-    = [("chez", Chez),
-       ("chez-sep", ChezSep),
-       ("racket", Racket),
-       ("node", Node),
-       ("javascript", Javascript),
-       ("refc", RefC),
-       ("gambit", Gambit)] ++ additionalCGs o
+    = additionalCGs o
 
 export
 getCG : Options -> String -> Maybe CG
