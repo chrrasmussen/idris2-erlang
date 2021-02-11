@@ -67,11 +67,9 @@ import Data.List
 import Data.List1
 import Data.Strings
 
-import System
-import System.Clock
-import System.Directory
-import System.File
-import System.Future
+import Erlang.System
+import Erlang.System.Directory
+import Erlang.System.File
 import System.Info
 import System.Path
 
@@ -162,15 +160,13 @@ normalize str =
 |||
 ||| @testPath the directory that contains the test.
 export
-runTest : Options -> String -> IO (Future Bool)
-runTest opts testPath = forkIO $ do
-  start <- clockTime Thread
+runTest : Options -> String -> IO Bool
+runTest opts testPath = do
   let cg = case codegen opts of
          Nothing => ""
          Just cg => "env IDRIS2_TESTS_CG=" ++ cg ++ " "
   ignore $ system $ "cd " ++ testPath ++ " && " ++
     cg ++ "sh ./run " ++ exeUnderTest opts ++ " | tr -d '\\r' > output"
-  end <- clockTime Thread
 
   Right out <- readFile $ testPath ++ "/output"
     | Left err => do print err
@@ -186,12 +182,11 @@ runTest opts testPath = forkIO $ do
                      pure False
 
   let result = normalize out == normalize exp
-  let time = timeDifference end start
 
   if result
-    then printTiming (timing opts) time $ testPath ++ ": success"
+    then printTiming (timing opts) $ testPath ++ ": success"
     else do
-      printTiming (timing opts) time $ testPath ++ ": FAILURE"
+      printTiming (timing opts) $ testPath ++ ": FAILURE"
       if interactive opts
         then mayOverwrite (Just exp) out
         else putStrLn . unlines $ expVsOut exp out
@@ -231,9 +226,8 @@ runTest opts testPath = forkIO $ do
                     | Left err => print err
                   pure ()
 
-    printTiming : Bool -> Clock type -> String -> IO ()
-    printTiming True  clock msg = putStrLn (unwords [msg, show clock])
-    printTiming False _     msg = putStrLn msg
+    printTiming : Bool -> String -> IO ()
+    printTiming _ msg = putStrLn msg
 
 ||| Find the first occurrence of an executable on `PATH`.
 export
@@ -324,15 +318,7 @@ poolRunner opts pool
        let Just _ = the (Maybe (List String)) (sequence cs)
              | Nothing => pure []
        -- if so run them all!
-       loop [] tests
-
-  where
-    loop : List (List Bool) -> List String -> IO (List Bool)
-    loop acc [] = pure (concat $ reverse acc)
-    loop acc tests
-      = do let (now, later) = splitAt opts.threads tests
-           bs <- map await <$> traverse (runTest opts) now
-           loop (bs :: acc) later
+       traverse (runTest opts) tests
 
 
 ||| A runner for a whole test suite

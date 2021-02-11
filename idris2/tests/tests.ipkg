@@ -1,6 +1,7 @@
 package runtests
 
+depends = test, contrib
 main = Main
 executable = runtests
 
-opts = "--cg chez"
+opts = "--cg erlang"

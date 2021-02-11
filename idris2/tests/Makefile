@@ -4,7 +4,7 @@ threads ?= `nproc`
 .PHONY: testbin test
 
 test:
-	./build/exec/runtests $(IDRIS2) $(INTERACTIVE) --threads $(threads) --only $(only)
+	escript build/exec/runtests.beam $(IDRIS2) $(INTERACTIVE) --threads $(threads) --only $(only)
 
 testbin:
 	${IDRIS2} --build tests.ipkg
