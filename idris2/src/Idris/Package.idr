@@ -29,6 +29,7 @@ import Libraries.Text.PrettyPrint.Prettyprinter
 import Libraries.Utils.Binary
 import Libraries.Utils.String
 import Libraries.Utils.Path
+import Libraries.Utils.System
 
 import Idris.CommandLine
 import Idris.Doc.HTML
@@ -691,7 +692,7 @@ processPackage opts (cmd, file)
                  | _ => throw $ InternalError "Tried to split empty string"
              let True = isSuffixOf ".ipkg" filename
                  | _ => do coreLift $ putStrLn ("Packages must have an '.ipkg' extension: " ++ show file ++ ".")
-                           coreLift (exitWith (ExitFailure 1))
+                           coreLift (softExitWith (ExitFailure 1))
              setWorkingDir dir
              Right (pname, fs) <- coreLift $ parseFile filename (parsePkgDesc filename <* eoi)
                 | Left err => throw err
@@ -700,26 +701,26 @@ processPackage opts (cmd, file)
              setOutputDir (outputdir pkg)
              case cmd of
                   Build => do [] <- build pkg opts
-                                 | errs => coreLift (exitWith (ExitFailure 1))
+                                 | errs => coreLift (softExitWith (ExitFailure 1))
                               pure ()
                   MkDoc => do [] <- makeDoc pkg opts
-                                 | errs => coreLift (exitWith (ExitFailure 1))
+                                 | errs => coreLift (softExitWith (ExitFailure 1))
                               pure ()
                   Install => do [] <- build pkg opts
-                                   | errs => coreLift (exitWith (ExitFailure 1))
+                                   | errs => coreLift (softExitWith (ExitFailure 1))
                                 install pkg opts {installSrc = False}
                   InstallWithSrc =>
                              do [] <- build pkg opts
-                                   | errs => coreLift (exitWith (ExitFailure 1))
+                                   | errs => coreLift (softExitWith (ExitFailure 1))
                                 install pkg opts {installSrc = True}
                   Typecheck => do
                     [] <- check pkg opts
-                      | errs => coreLift (exitWith (ExitFailure 1))
+                      | errs => coreLift (softExitWith (ExitFailure 1))
                     pure ()
                   Clean => clean pkg opts
                   REPL => do
                     [] <- build pkg opts
-                       | errs => coreLift (exitWith (ExitFailure 1))
+                       | errs => coreLift (softExitWith (ExitFailure 1))
                     runRepl (map snd $ mainmod pkg)
                   Init => pure () -- already handled earlier
 
