@@ -25,6 +25,7 @@ import Core.TT
 import Core.Unify
 
 import Parser.Unlit
+import Libraries.Utils.System
 
 import Idris.Desugar
 import Idris.DocString
@@ -204,7 +205,7 @@ findCG
               Other s => case !(getCodegen s) of
                             Just cg => pure cg
                             Nothing => do coreLift_ $ putStrLn ("No such code generator: " ++ s)
-                                          coreLift $ exitWith (ExitFailure 1)
+                                          coreLift $ softExitWith (ExitFailure 1)
 
 anyAt : (a -> Bool) -> a -> b -> Bool
 anyAt p loc _ = p loc
