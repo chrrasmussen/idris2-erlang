@@ -264,7 +264,8 @@ erlangTests = MkTestPool "Erlang backend" [Erlang]
     ,                       "chez021",                       "chez024"
     , "chez025", "chez026", "chez027", "chez028", "chez029"
     ,            "chez032"
-    , "basic048", "evaluator004", "perf006", "reg001"
+    -- , "basic048", "evaluator004" -- TODO: Disabled for now
+    , "perf006", "reg001"
     ]
     -- Disabled tests:
     -- * chez019
