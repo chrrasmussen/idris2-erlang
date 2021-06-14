@@ -1,0 +1,8 @@
+-module('Idris.Idris2.Debug.Trace').
+-compile('no_auto_import').
+-compile('inline').
+-compile({'inline_size',24}).
+-export([
+  'un--trace'/2
+]).
+'un--trace'(V0, V1) -> ('Idris.Idris2.PrimIO':'un--unsafePerformIO'(('Idris.Idris2.Prelude.Interfaces':'un-->>'({'Idris.Prelude.Interfaces.MkMonad', {'Idris.Prelude.Interfaces.MkApplicative', fun (V2) -> fun (V3) -> fun (V4) -> fun (V5) -> fun (V6) -> ('Idris.Idris2.Prelude.IO':'dn--un--map_Functor_IO'(V4, V5, V6)) end end end end end, fun (V7) -> fun (V8) -> fun (V9) -> V8 end end end, fun (V10) -> fun (V11) -> fun (V12) -> fun (V13) -> fun (V14) -> begin (V15 = (V12(V14))), begin (V16 = (V13(V14))), (V15(V16)) end end end end end end end}, fun (V17) -> fun (V18) -> fun (V19) -> fun (V20) -> fun (V21) -> begin (V22 = (V19(V21))), ((V20(V22))(V21)) end end end end end end, fun (V23) -> fun (V24) -> fun (V25) -> begin (V26 = (V24(V25))), (V26(V25)) end end end end}, ('Idris.Idris2.Prelude.IO':'un--putStrLn'({'Idris.Prelude.IO.MkHasIO', {'Idris.Prelude.Interfaces.MkMonad', {'Idris.Prelude.Interfaces.MkApplicative', fun (V27) -> fun (V28) -> fun (V29) -> fun (V30) -> fun (V31) -> ('Idris.Idris2.Prelude.IO':'dn--un--map_Functor_IO'(V29, V30, V31)) end end end end end, fun (V32) -> fun (V33) -> fun (V34) -> V33 end end end, fun (V35) -> fun (V36) -> fun (V37) -> fun (V38) -> fun (V39) -> begin (V40 = (V37(V39))), begin (V41 = (V38(V39))), (V40(V41)) end end end end end end end}, fun (V42) -> fun (V43) -> fun (V44) -> fun (V45) -> fun (V46) -> begin (V47 = (V44(V46))), ((V45(V47))(V46)) end end end end end end, fun (V48) -> fun (V49) -> fun (V50) -> begin (V51 = (V49(V50))), (V51(V50)) end end end end}, fun (V52) -> fun (V53) -> V53 end end}, V0)), fun () -> fun (V54) -> V1 end end)))).
